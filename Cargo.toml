@@ -1,0 +1,27 @@
+[package]
+name = "psp-packer"
+version = "0.1.0"
+description = "A command line tool to compress PRX and PBP PlayStation Portable file formats"
+authors = ["GrayJack <gr41.j4ck@gmail.com>"]
+license = "MPL-2.0-no-copyleft-exception"
+edition = "2024"
+categories = ["command-line-utilities"]
+keywords = ["psp", "pspdev", "system"]
+exclude = ["/.cargo", "/.github", "/.idea", "/.vscode"]
+
+[profile.release]
+strip = "symbols"
+
+[dependencies]
+bitflag-attr = "0.12.1"
+bstr = { version = "1.12.0", optional = true }
+clap = { version = "4.5.41", features = ["cargo"] }
+flate2 = { version = "1.1.2", features = ["zlib-rs"], default-features = false }
+rand = { version = "0.9.1", default-features = false, features = ["alloc"] }
+rapidhash = { version = "1.4.0", default-features = false, features = ["rng"] }
+
+[features]
+default = []
+# Derive/Implement fmt::Debug and extra traits (unneeded for the application)
+# for all types. (For debugging and testing, i.e dev-only)
+dev = ["dep:bstr"]
