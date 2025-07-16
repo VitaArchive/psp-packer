@@ -32,4 +32,4 @@ jobs:
     - name: Cache cargo output
       uses: Swatinem/rust-cache@v2
     - name: Check DragonflyBSD
-      run: cargo check --workspace --target x86_64-unknown-dragonfly -Zbuild-std=core,alloc
+      run: cargo check --workspace --target x86_64-unknown-dragonfly -Zbuild-std=std

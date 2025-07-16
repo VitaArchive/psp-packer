@@ -35,4 +35,4 @@ jobs:
     - name: Check FreeBSD (x86_64)
       run: cargo check --workspace --target x86_64-unknown-freebsd
     - name: Check FreeBSD (aarch64)
-      run: cargo check --workspace --target aarch64-unknown-freebsd -Zbuild-std=core,alloc
+      run: cargo check --workspace --target aarch64-unknown-freebsd -Zbuild-std=std
