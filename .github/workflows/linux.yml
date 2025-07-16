@@ -1,0 +1,37 @@
+name: Linux
+
+on:
+  push:
+    branches: ["main"]
+    tags-ignore: ["**"]
+    paths-ignore:
+      - "**.md"
+      - LICENSE
+      - .github/FUNDING.yml
+      - .gitignore
+  pull_request:
+    paths-ignore:
+      - "**.md"
+      - "**/LICENSE"
+      - .github/FUNDING.yml
+      - .editorconfig
+      - .gitignore
+
+jobs:
+  check:
+    name: Linux (x86_64 GNU)
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout sources
+      uses: actions/checkout@v4
+    - name: Install Rust toolchain
+      uses: dtolnay/rust-toolchain@master
+      with:
+        components: rust-src
+        target: aarch64-unknown-linux-gnu
+    - name: Cache cargo output
+      uses: Swatinem/rust-cache@v2
+    - name: Check Linux (x86_64 GNU)
+      run: cargo check
+    - name: Check Linux (aarch64 GNU)
+      run: cargo check --target aarch64-unknown-linux-gnu
