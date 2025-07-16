@@ -15,6 +15,35 @@ A command line tool to compress the PRX and PBP PlayStation Portable file format
  - [ ] Signing (Maybe)
  - [ ] Decompress (Maybe)
 
+## Installing
+
+### From crates.io:
+```sh
+cargo install psp-packer
+```
+
+### From source:
+
+1. Clone the repository
+```sh
+git clone https://github.com/GrayJack/psp-packer.git
+cd psp-packer
+```
+
+2. Build the binary
+```sh
+cargo build --release --target-dir=target
+```
+
+3. Copy the binary to PSPDEV binary folder
+
+UNIX/UNIX-like:
+```sh
+cp target/release/psp-packer $PSPDEV/bin/
+```
+
+Windows: Grab the `target\release\psp-packer.exe` and put in the PSPDEV `bin` folder.
+
 ## Licensing
 
 This software is licensed under the [Mozilla Public License, v. 2.0](./LICENSE)
